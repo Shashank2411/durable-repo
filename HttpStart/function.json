@@ -1,22 +1,21 @@
 {
-"bindings": [
-{
-"authLevel": "anonymous",
-"type": "httpTrigger",
-"direction": "in",
-"name": "req",
-"methods": ["get", "post"],
-"route": "HttpStart"
-},
-{
-"type": "http",
-"direction": "out",
-"name": "$return"
-},
-{
-"type": "durableClient",
-"name": "starter",
-"direction": "in"
-}
-]
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "durableClient",
+      "name": "starter",
+      "direction": "in"
+    }
+  ]
 }
