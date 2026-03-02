@@ -1,7 +1,8 @@
 {
-"name": "durable-fanout",
-"version": "1.0.0",
-"dependencies": {
-"durable-functions": "^2.5.0"
-}
+  "name": "durablefanout",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "durable-functions": "^2.5.0"
+  }
 }
