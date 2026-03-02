@@ -1,0 +1,7 @@
+node_modules
+local.settings.json
+.git
+.vscode
+__blobstorage__
+__queuestorage__
+_azurite_db_*

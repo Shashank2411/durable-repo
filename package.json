@@ -1,0 +1,7 @@
+{
+"name": "durable-fanout",
+"version": "1.0.0",
+"dependencies": {
+"durable-functions": "^2.0.0"
+}
+}
