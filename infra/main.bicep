@@ -1,7 +1,7 @@
 param functionAppName string = 'durablefunc7287'
 param location string = 'Central India'
 
-var storageName = toLower(replace('${functionAppName}${uniqueString(resourceGroup().id)}', '-', ''))
+var storageName = toLower(substring(replace('${functionAppName}${uniqueString(resourceGroup().id)}', '-', ''), 0, 24))
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: storageName
