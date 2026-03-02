@@ -28,20 +28,22 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
   properties: {
     serverFarmId: plan.id
     siteConfig: {
-      appSettings: [
-        {
-          name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, storage.apiVersion).keys[0].value};EndpointSuffix=core.windows.net'
-        }
-        {
-          name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: 'node'
-        }
-        {
-          name: 'FUNCTIONS_EXTENSION_VERSION'
-          value: '~4'
-        }
-      ]
+      siteConfig: {
+        appSettings: [
+            {
+            name: 'AzureWebJobsStorage'
+            value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, \'2023-01-01\').keys[0].value};EndpointSuffix=core.windows.net'
+            }
+            {
+            name: 'FUNCTIONS_WORKER_RUNTIME'
+            value: 'node'
+            }
+            {
+            name: 'FUNCTIONS_EXTENSION_VERSION'
+            value: '~4'
+            }
+        ]
+}
     }
   }
 }
