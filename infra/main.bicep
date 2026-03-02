@@ -1,8 +1,10 @@
-param functionAppName string = 'durable-func-7287'
+param functionAppName string = 'durablefunc7287'
 param location string = 'Central India'
 
+var storageName = toLower(replace('${functionAppName}${uniqueString(resourceGroup().id)}', '-', ''))
+
 resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
-  name: toLower('${functionAppName}sa')
+  name: storageName
   location: location
   sku: {
     name: 'Standard_LRS'
@@ -29,7 +31,7 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
       appSettings: [
         {
           name: 'AzureWebJobsStorage'
-          value: storage.properties.primaryEndpoints.blob
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, storage.apiVersion).keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
