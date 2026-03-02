@@ -21,6 +21,8 @@ resource plan 'Microsoft.Web/serverfarms@2023-01-01' = {
   }
 }
 
+var storageConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${storage.listKeys().keys[0].value};EndpointSuffix=core.windows.net'
+
 resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
   name: functionAppName
   location: location
@@ -31,7 +33,7 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
       appSettings: [
         {
           name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, storage.apiVersion).keys[0].value};EndpointSuffix=core.windows.net'
+          value: storageConnectionString
         }
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
